@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <title>
+            Reaction testx  
+        </title>
+        <style>
+             #shape{
+             
+                height :100px;
+                background-color: red;
+                border: 2px solid black;
+                display: none;
+                position :relative;
+                
+             }
+        </style>
+    </head>
+    <body>
+        <h1>Test your speed</h1>
+        <h3>Click on the boxes as fast as you can</h3>  
+        <p>
+            Your time taken to react : <span id="value"></span> 
+         </p>
+         <div id="shape">
+
+         </div>
+
+         <script>
+            var start=new Date().getTime();
+           
+            function getrandomcolor(){
+                            
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+            }
+            
+
+            function shapeappear()
+            {
+                var top=Math.random()*500;
+                var bottom=Math.random()*500;
+                var right=Math.random()*500;
+                var left=Math.random()*500;
+                var width=Math.random()*200;
+                document.getElementById("shape").style.backgroundColor=getrandomcolor();    
+                document.getElementById("shape").style.top=top+"px";
+                document.getElementById("shape").style.bottom=bottom+"px";
+                document.getElementById("shape").style.right=right+"px";
+                document.getElementById("shape").style.left=left+"px";
+                document.getElementById("shape").style.width=width+"px";
+                if(Math.random()>0.5)
+                {
+                    document.getElementById("shape").style.borderRadius="50%";
+                }
+                else{
+                    document.getElementById("shape").style.borderRadius="0%";
+                }
+                
+
+                document.getElementById("shape").style.display="block";
+                start=new Date().getTime();
+                
+            }
+            function appearafterdelay()
+            {
+                setTimeout(shapeappear, Math.random()*3000);
+            }
+            appearafterdelay(); 
+           
+            document.getElementById("shape").onclick=function(){
+                
+              
+                document.getElementById("shape").style.display="none";
+
+                var end=new Date().getTime();
+                time=(end-start)/1000;
+                document.getElementById("value").innerHTML=time+" seconds";  
+               
+                appearafterdelay();
+               
+                
+                }
+               
+       
+                
+                   
+            
+            
+
+            
+         </script>
+    </body>
+</html>
